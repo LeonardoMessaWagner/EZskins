@@ -1,5 +1,4 @@
 <script>
-	// export let name;
 	import { Router, Route } from "svelte-navigator";
 	import Menu from "./componentes/Menu.svelte";
 	import Home from "./paginas/Home.svelte";
@@ -8,6 +7,7 @@
 </script>
 
 <body>
+	
 	<Router>
 		<Menu />
 
