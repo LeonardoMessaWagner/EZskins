@@ -5,7 +5,7 @@
 	import Home from "./paginas/Home.svelte";
 	import Contato from "./paginas/Contato.svelte";
 </script>
-
+<body>
 <Router>
 	<Menu />
 
@@ -16,18 +16,11 @@
 		<Contato />
 	</Route>
 </Router>
-
+</body>
 <style>
-	/* h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	} */
+	body{
+       background-color: #0c011c;
+   }
 
-	@media (min-width: 640px) {
-		/* main {
-			max-width: none;
-		} */
-	}
+	
 </style>
