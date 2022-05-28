@@ -1,38 +1,52 @@
 <script>
     import { Link } from "svelte-navigator";
-    
-    
+    import Dropdown from "sv-bootstrap-dropdown";
+    let dropdownTrigger;
+    window.process = {
+        env: "production",
+    };
 </script>
 
 <nav class="nav">
     <ul>
-        <li><Link to="/" class="nav-link">Home</Link></li>
-        <li><a href="s">Facas</a></li>
-        <li  class="drop">
-            <a href="s">Skins</a>
-            <ul   class="dropdown">
-                <li><a href="s">Facas</a></li>
-                <li><a href="s">Rifles</a></li>
-                <li><a href="s">Pistolas</a></li>
-            </ul>
+        <li>
+            <div class="link-wrapper">
+                <Link to="/" class="link">Home</Link>
+            </div>
+        </li>
+        <li>
+            <div class="link-wrapper">
+                <Dropdown triggerElement={dropdownTrigger}>
+                    <a
+                        type="button"
+                        class="link"
+                        id="botao"
+                        bind:this={dropdownTrigger}
+                    >
+                        Skins ▾
+                    </a>
+                    <div slot="DropdownMenu">
+                        <button class="dropdown-item" type="button"
+                            >Facas</button
+                        >
+                        <button class="dropdown-item" type="button"
+                            >Rifles</button
+                        >
+                        <button class="dropdown-item" type="button"
+                            >Pistolas</button
+                        >
+                    </div>
+                </Dropdown>
+            </div>
+        </li>
+        <li>
+            <div class="link-wrapper">
+                <Link to="/contato" class="link">Contato</Link>
+            </div>
         </li>
     </ul>
 </nav>
 
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    
-                </li>
-                <li class="nav-item">
-                    <Link to="/contato" class="nav-link">Contato</Link>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav> -->
 <style>
     @import url(https://fonts.googleapis.com/css?family=Montserrat:300&subset=latin-ext);
 
@@ -60,7 +74,11 @@
         position: relative;
     }
 
-    nav ul li a {
+    nav ul li ul li {
+        min-width: 190px;
+    }
+
+    #botao {
         display: block;
         color: rgba(255, 255, 255, 0.9);
         text-decoration: none;
@@ -69,41 +87,29 @@
         border-bottom: 2px solid transparent;
         transition: all 0.3s ease-in-out;
     }
-
-    nav ul li a:hover,
-    nav ul li a:focus {
+    #botao:hover,
+    #botao:focus {
         background: rgba(0, 0, 0, 0.15);
     }
-
-    nav ul li a:focus {
+    #botao:focus {
         color: white;
     }
 
-    nav ul li a:not(:only-child)::after {
-        padding-left: 4px;
-        content: " ▾";
+    .link-wrapper > :global(a) {
+        display: block;
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        padding: 1rem 2rem;
+        border-top: 2px solid transparent;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s ease-in-out;
+    }
+    .link-wrapper > :global(a):hover,
+    .link-wrapper > :global(a):focus {
+        background: rgba(0, 0, 0, 0.15);
     }
 
-    nav ul li ul li {
-        min-width: 190px;
-    }
-
-    nav ul li ul li a {
-        background: transparent;
-        color: #555;
-        border-bottom: 1px solid #dde0e7;
-    }
-
-    nav ul li ul li a:hover,
-    nav ul li ul li a:focus {
-        background: #eee;
-        color: #111;
-    }
-
-    .dropdown {
-        display: none;
-        position: absolute;
-        background: #fff;
-        box-shadow: 0 4px 10px rgba(10, 20, 30, 0.4);
+    .link-wrapper > :global(a):focus {
+        color: white;
     }
 </style>
