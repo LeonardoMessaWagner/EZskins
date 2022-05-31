@@ -7,109 +7,87 @@
     };
 </script>
 
-<nav class="nav">
-    <ul>
-        <li>
-            <div class="link-wrapper">
-                <Link to="/" class="link">Home</Link>
-            </div>
-        </li>
-        <li>
-            <div class="link-wrapper">
-                <Dropdown triggerElement={dropdownTrigger}>
-                    <a
-                        type="button"
-                        class="link"
-                        id="botao"
-                        bind:this={dropdownTrigger}
-                    >
-                        Skins ▾
-                    </a>
-                    <div slot="DropdownMenu">
-                        <button class="dropdown-item" type="button"
-                            >Facas</button
-                        >
-                        <button class="dropdown-item" type="button"
-                            >Rifles</button
-                        >
-                        <button class="dropdown-item" type="button"
-                            >Pistolas</button
-                        >
-                    </div>
-                </Dropdown>
-            </div>
-        </li>
-        <li>
-            <div class="link-wrapper">
-                <Link to="/contato" class="link">Contato</Link>
-            </div>
-        </li>
-    </ul>
-</nav>
+<div class="topnav">
+    <Link class="active" to="/">Home</Link>
+    <Link to="/contato">Contato</Link>
+    
+    <div class="search-container">
+        <form action="/action_page.php">
+            <input type="text" placeholder="Buscar Skins..." name="search" />
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+</div>
+
 
 <style>
-    @import url(https://fonts.googleapis.com/css?family=Montserrat:300&subset=latin-ext);
-
-    nav {
-        margin: 0 auto;
-        background: #29065b;
-        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
-        justify-content: center;
+    .topnav {
+        overflow: hidden;
+        background-color: #29065b;
+        text-align: center;
+        
     }
 
-    nav::after {
-        display: block;
-        content: "";
-        clear: both;
-    }
-
-    nav ul {
-        padding: 0;
-        margin: 0;
-        list-style: none;
-    }
-
-    nav ul li {
+    
+    .topnav > :global(a) {
         float: left;
-        position: relative;
-    }
-
-    nav ul li ul li {
-        min-width: 190px;
-    }
-
-    #botao {
         display: block;
-        color: rgba(255, 255, 255, 0.9);
-        text-decoration: none;
-        padding: 1rem 2rem;
-        border-top: 2px solid transparent;
-        border-bottom: 2px solid transparent;
-        transition: all 0.3s ease-in-out;
-    }
-    #botao:hover,
-    #botao:focus {
-        background: rgba(0, 0, 0, 0.15);
-    }
-    #botao:focus {
         color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
     }
 
-    .link-wrapper > :global(a) {
-        display: block;
-        color: rgba(255, 255, 255, 0.9);
-        text-decoration: none;
-        padding: 1rem 2rem;
-        border-top: 2px solid transparent;
-        border-bottom: 2px solid transparent;
-        transition: all 0.3s ease-in-out;
-    }
-    .link-wrapper > :global(a):hover,
-    .link-wrapper > :global(a):focus {
-        background: rgba(0, 0, 0, 0.15);
+    .topnav > :global(a):hover {
+        background-color: rgba(0, 0, 0, 0.15);;
+        
     }
 
-    .link-wrapper > :global(a):focus {
-        color: white;
+    
+
+    .topnav .search-container {
+        float: right;
+    }
+
+    .topnav input[type="text"] {
+        padding: 6px;
+        margin-top: 8px;
+        font-size: 17px;
+        border: none;
+    }
+
+    .topnav .search-container button {
+        float: right;
+        padding: 6px 10px;
+        margin-top: 8px;
+        margin-right: 16px;
+        background: #ddd;
+        font-size: 17px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .topnav .search-container button:hover {
+        background: #ccc;
+    }
+
+    @media screen and (max-width: 600px) {
+        .topnav .search-container {
+            float: none;
+        }
+        
+        .topnav input[type="text"],
+        .topnav .search-container button {
+            float: none;
+            display: block;
+            text-align: left;
+            width: 100%;
+            margin: 0;
+            padding: 14px;
+        }
+        .topnav input[type="text"] {
+            border: 1px solid #ccc;
+        }
     }
 </style>
