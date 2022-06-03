@@ -9,6 +9,7 @@
             <h1>Bem Vindo ao EZskins </h1>
         </div>
     </div>
+    
 </div>
 
 <style type="text/css">
@@ -19,4 +20,5 @@
 		font-weight: 100;
         text-align: center;
    }
+   
 </style>

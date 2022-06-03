@@ -1,9 +1,9 @@
 <script>
 	import { Router, Route } from "svelte-navigator";
 	import Menu from "./componentes/Menu.svelte";
-	import Home from "./paginas/Home.svelte";
-	import Contato from "./paginas/Contato.svelte";
-	
+	import Home from "./Home.svelte";
+	import Contato from "./Contato.svelte";
+	import Cadastro from "./Cadastro.svelte";
 	
 	
 	
@@ -18,6 +18,9 @@
 		</Route>
 		<Route path="/contato" primary={false}>
 			<Contato />
+		</Route>
+		<Route path="/cadastro" primary={false}>
+			<Cadastro />
 		</Route>
 	</Router>
 	

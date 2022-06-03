@@ -10,7 +10,7 @@
 <div class="topnav">
     <Link class="active" to="/">Home</Link>
     <Link to="/contato">Contato</Link>
-    
+    <Link to="/cadastro">Cadastre-se</Link>
     <div class="search-container">
         <form action="/action_page.php">
             <input type="text" placeholder="Buscar Skins..." name="search" />
