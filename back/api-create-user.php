@@ -30,6 +30,7 @@ try{
   $data = $cursor->getAll();
   header('Content-Type: application/json');
   echo json_encode($data);
+  
 }catch(Exception $ex){
   echo $ex;
 }

@@ -1,6 +1,6 @@
 <script>
     import { ajUsers } from "./users.js";
-    import User from "./User.svelte";
+    // import User from "./User.svelte";
     let frmSaveUser;
     let txtUserName;
     let txtUserLastName;
@@ -15,14 +15,14 @@
             body: new FormData(frmSaveUser),
         });
         let res = await con.json();
+        if(res != null || res != undefined) {
+            alert("Cadastrado com sucesso");
+            window.location.href ="http://localhost:8080";
+        }
         $ajUsers = [...res, ...$ajUsers];
-        txtUserName.value = "";
-        txtUserName.focus();
-        txtUserLastName.value = "";
-        txtUserEmail.value = "";
-        txtUserPassWord.value = "";
-        txtUserLinktrade.value = "";
-        txtUserCEP.value = "";
+        
+        
+        
     };
     const getMoreUsers = async () => {
         let connection = await fetch(
@@ -54,7 +54,7 @@
                         id="myform"
                         bind:this={frmSaveUser}
                         on:submit|preventDefault={saveUser}
-                        autocomplete="off"
+                        autocomplete="on"
                     >
                         <div class="form-left">
                             <h2>Informações Gerais</h2>
@@ -210,11 +210,12 @@
       Show more users
     </button> -->
 
-<div id="users">
+<!-- <div id="users">
     {#each $ajUsers as jUser (jUser._key)}
         <User {jUser} />
+        
     {/each}
-</div>
+</div> -->
 
 <div>
     <!-- {JSON.stringify($ajUsers)} -->
