@@ -5,6 +5,7 @@
     let frmUser
     let txtUserName
     let txtUserLastName
+    
     let sUserState
     $:btnDeleteCaption = ( sUserState == "deleting" ? "Undo" : "Delete" )
     $:userBgColor = ( sUserState == "deleting" ? "rgba(247, 51, 120, 0.4)" : "white" )
