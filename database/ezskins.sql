@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS `ezskins`.`Usuarios` (
   `rua_numero` VARCHAR(255) NOT NULL,
   `pais` VARCHAR(45) NOT NULL,
   `celular` VARCHAR(45) NOT NULL,
+  `permissao` VARCHAR(45) NOT NULL
   PRIMARY KEY (`idusuario`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB;
