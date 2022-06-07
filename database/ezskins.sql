@@ -21,7 +21,7 @@ USE `ezskins` ;
 -- Table `ezskins`.`Usuarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ezskins`.`Usuarios` (
-  `idusuario` INT NOT NULL,
+  `idusuario` INT NOT NULL auto_increment,
   `nome` VARCHAR(45) NOT NULL,
   `sobre_nome` VARCHAR(45) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
@@ -40,7 +40,7 @@ ENGINE = InnoDB;
 -- Table `ezskins`.`Admins`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ezskins`.`Admins` (
-  `idadmins` INT NOT NULL,
+  `idadmins` INT NOT NULL auto_increment,
   `nome` VARCHAR(45) NOT NULL,
   `sobre_nome` VARCHAR(45) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
@@ -54,7 +54,7 @@ ENGINE = InnoDB;
 -- Table `ezskins`.`category`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ezskins`.`category` (
-  `category_id` INT NOT NULL,
+  `category_id` INT NOT NULL auto_increment,
   `name` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`category_id`));
 
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `ezskins`.`category` (
 -- Table `ezskins`.`Skins`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ezskins`.`Skins` (
-  `idskins` INT NOT NULL,
+  `idskins` INT NOT NULL auto_increment,
   `nome` VARCHAR(45) NOT NULL,
   `descricao` VARCHAR(500) NOT NULL,
   `estado` VARCHAR(45) NOT NULL,

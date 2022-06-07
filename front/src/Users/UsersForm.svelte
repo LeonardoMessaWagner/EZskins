@@ -1,6 +1,6 @@
 <script>
     import { ajUsers } from "./users.js";
-    // import User from "./User.svelte";
+    import User from "./User.svelte";
     let frmSaveUser;
     let txtUserName;
     let txtUserLastName;
@@ -13,33 +13,16 @@
         let con = await fetch(`http://localhost/back/api-create-user.php`, {
             method: "POST",
             body: new FormData(frmSaveUser),
-        });
-        let res = await con.json();
-        if(res != null || res != undefined) {
-            alert("Cadastrado com sucesso");
-            window.location.href ="http://localhost:8080";
-        }
+        })
+            .then(function (data) {
+                alert(data);
+            })
+            .catch(function (error) {
+                alert(error);
+            });
+
         $ajUsers = [...res, ...$ajUsers];
-        
-        
-        
     };
-    const getMoreUsers = async () => {
-        let connection = await fetch(
-            `http://localhost/back/api-get-from-to-users.php?from=${from}`
-        );
-        let res = await connection.json();
-        from += 2;
-        for (let i = 0; i < $ajUsers.length; i++) {
-            for (let y = 0; y < res.length; y++) {
-                if ($ajUsers[i]._key == res[y]._key) {
-                    res = res.splice(i, 1);
-                }
-            }
-        }
-        $ajUsers = [...res.reverse(), ...$ajUsers];
-    };
-    getMoreUsers();
 </script>
 
 <div class="container">
@@ -183,7 +166,7 @@
                                 <label class="container"
                                     ><p>
                                         Eu concordo com os <a
-                                            href="#"
+                                            href="#semcondicao"
                                             class="text">Termos e Condições</a
                                         > do site.
                                     </p>

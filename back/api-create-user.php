@@ -1,36 +1,22 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-use ArangoDBClient\ConnectException as ArangoConnectException;
-use ArangoDBClient\Exception as ArangoException;
-use ArangoDBClient\Statement as ArangoStatement;
-require_once(__DIR__.'/arangodb.php');
+require_once(__DIR__ . '/conexao.php');
+$nome = isset($_POST['name']) ? $_POST['name'] : 'nome';
+$sobre_nome = isset($_POST['lastname']) ? $_POST['lastname'] : 'sobreNome';
+$email = isset($_POST['email']) ? $_POST['email'] : 'email@gmail.com';
+$password = isset($_POST['password']) ? md5($_POST['password']) : md5(12345678);
+$tradeLink = isset($_POST['tradeLink']) ? $_POST['tradeLink'] : 'steam.com/teste';
+$cep = isset($_POST['cep']) ? $_POST['cep'] : '97670000';
+$endereco = isset($_POST['endereco']) ? $_POST['endereco'] : 'general osorio,3052';
+$pais = isset($_POST['pais']) ? $_POST['pais'] : 'Brazil';
+$ddd = isset($_POST['ddd']) ? $_POST['ddd'] : '55';
+$celular = isset($_POST['celular']) ? $_POST['celular'] : '999330461';
 
-$user['name'] = $_POST['name'];
-$user['lastName'] = $_POST['lastName'];
-$user['email'] = $_POST['email'];
-$user['password'] = md5($_POST['password']);
-$user['tradeLink'] = $_POST['tradeLink'];
-$user['cep'] = $_POST['cep'];
-$user['endereco'] = $_POST['endereco'];
-$user['pais'] = $_POST['pais'];
-$user['ddd'] = $_POST['ddd'];
-$user['celular'] = $_POST['celular'];
 
-try{
-  $stmt = new ArangoStatement(
-    $db,
-    [ 
-      'query'=>'INSERT @user IN users RETURN NEW',
-      'bindVars' => [
-        'user' => $user
-      ]
-    ]
-  );
-  $cursor = $stmt->execute();
-  $data = $cursor->getAll();
-  header('Content-Type: application/json');
-  echo json_encode($data);
-  
-}catch(Exception $ex){
-  echo $ex;
+try {
+
+  $stmt = $pdo->prepare("INSERT INTO `usuarios` (`nome`, `sobre_nome`, `email`, `senha`, `trade_link`, `cep`, `rua_numero`, `pais`, `celular`) VALUES (?,?,?,?,?,?,?,?,?)");
+  $stmt->execute([$nome, $sobre_nome, $email, $password, $tradeLink, $cep, $endereco, $pais, $celular]);
+} catch (Exception $ex) {
+  echo "<br>" . $ex;
 }
