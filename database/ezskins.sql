@@ -38,20 +38,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ezskins`.`Admins`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ezskins`.`Admins` (
-  `idadmins` INT NOT NULL auto_increment,
-  `nome` VARCHAR(45) NOT NULL,
-  `sobre_nome` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(100) NOT NULL,
-  `senha` VARCHAR(60) NOT NULL,
-  PRIMARY KEY (`idadmins`),
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `ezskins`.`category`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ezskins`.`category` (
@@ -69,16 +55,9 @@ CREATE TABLE IF NOT EXISTS `ezskins`.`Skins` (
   `descricao` VARCHAR(500) NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
   `foto` VARCHAR(255) NOT NULL,
-  `admins_idadmins` INT NOT NULL,
   `category_category_id` INT NOT NULL,
-  PRIMARY KEY (`idskins`, `admins_idadmins`),
-  INDEX `fk_Skins_Admins1_idx` (`admins_idadmins` ASC) VISIBLE,
+  PRIMARY KEY (`idskins`),
   INDEX `fk_Skins_category1_idx` (`category_category_id` ASC) VISIBLE,
-  CONSTRAINT `fk_Skins_Admins1`
-    FOREIGN KEY (`admins_idadmins`)
-    REFERENCES `ezskins`.`Admins` (`idadmins`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_Skins_category1`
     FOREIGN KEY (`category_category_id`)
     REFERENCES `ezskins`.`category` (`category_id`)
