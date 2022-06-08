@@ -1,6 +1,6 @@
 <script>
     import { ajUsers } from "./users.js";
-    import User from "./User.svelte";
+    //import User from "./User.svelte";
     let frmSaveUser;
     let txtUserName;
     let txtUserLastName;
