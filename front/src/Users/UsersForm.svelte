@@ -37,7 +37,7 @@
                         id="myform"
                         bind:this={frmSaveUser}
                         on:submit|preventDefault={saveUser}
-                        autocomplete="on"
+                        autocomplete="off"
                     >
                         <div class="form-left">
                             <h2>Informações Gerais</h2>
@@ -143,10 +143,10 @@
                                 <div class="form-row form-row-1">
                                     <input
                                         type="text"
-                                        name="ddd"
-                                        class="ddd"
-                                        id="ddd"
-                                        placeholder="DDD"
+                                        name="estado"
+                                        class="estado"
+                                        id="estado"
+                                        placeholder="Estado"
                                         required
                                     />
                                 </div>

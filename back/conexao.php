@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 
 try {
   $pdo = new PDO("mysql:host=$servername;dbname=ezskins", $username, $password);
