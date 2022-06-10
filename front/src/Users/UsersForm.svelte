@@ -23,6 +23,7 @@
 
         $ajUsers = [...res, ...$ajUsers];
     };
+    let yes = false;
 </script>
 
 <div class="container">
@@ -170,17 +171,23 @@
                                             class="text">Termos e Condições</a
                                         > do site.
                                     </p>
-                                    <input type="checkbox" name="checkbox" />
+                                    <input
+                                        type="checkbox"
+                                        name="checkbox"
+                                        bind:checked={yes}
+                                    />
                                     <span class="checkmark" />
                                 </label>
                             </div>
-                            <div class="form-row-last">
-                                <button
-                                    type="submit"
-                                    id="btnSave"
-                                    class="btn btn-primary">Concluir</button
-                                >
-                            </div>
+                            {#if yes}
+                                <div class="form-row-last">
+                                    <button
+                                        type="submit"
+                                        id="btnSave"
+                                        class="btn btn-primary">Concluir</button
+                                    >
+                                </div>
+                            {/if}
                         </div>
                     </form>
                 </div>
